@@ -28,11 +28,11 @@ var (
 func StringSum(input string) (output string, err error) {
 	input = strings.Replace(input, " ", "", -1)
 	if input == "" {
-		return "", errorEmptyInput
+		return "", fmt.Errorf("an error ocured: %w", errorEmptyInput)
 	}
 	numbers := getNumbers(input)
-	if len(numbers) > 2 {
-		return "", errorNotTwoOperands
+	if len(numbers) != 2 {
+		return "", fmt.Errorf("an error ocured: %w", errorNotTwoOperands)
 	}
 
 	numberOne, err := strconv.Atoi(numbers[0])
